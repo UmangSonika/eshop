@@ -51,5 +51,4 @@ export const sendOtp = async (name:string, email:string, template:string)=>{
     await sendEmail(email, "Verify Your Email", template, {name, otp});
     await redis.set(`otp:${email}`, otp, "EX", 300);
     await redis.set(`otp_cooldown:${email}`, "true", "EX", 60);
-
 }
